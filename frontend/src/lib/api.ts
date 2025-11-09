@@ -1,6 +1,6 @@
 import { PaginatedTasks, Task, TaskStatus } from '../types/task.js';
 
-const BASE_URL = import.meta.env.VITE_API_URL ?? '';
+const BASE_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3000';
 
 const handleResponse = async <T>(response: Response): Promise<T> => {
   if (!response.ok) {
