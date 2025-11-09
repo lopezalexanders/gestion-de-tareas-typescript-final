@@ -2,9 +2,10 @@
 FROM node:20-slim AS base
 WORKDIR /app
 COPY package.json package-lock.json* .npmrc* ./
-RUN npm install --omit=dev
+RUN npm install
 COPY . .
 RUN npm run build
+RUN npm prune --omit=dev
 
 FROM node:20-slim AS runtime
 WORKDIR /app
