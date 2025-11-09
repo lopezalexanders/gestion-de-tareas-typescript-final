@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestor de Tareas - DevPro Bolivia</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Gestor de Tareas</h1>
+        <p class="subtitle">
+          Interactúa con la API sin necesidad de herramientas externas. Crea tareas,
+          revísalas y cambia su estado desde un único lugar.
+        </p>
+      </header>
+
+      <section class="card">
+        <h2>Nueva tarea</h2>
+        <form id="task-form" autocomplete="off">
+          <label class="field">
+            <span>Título *</span>
+            <input id="title" name="title" type="text" maxlength="120" required />
+          </label>
+
+          <label class="field">
+            <span>Descripción</span>
+            <textarea id="description" name="description" maxlength="2000"></textarea>
+          </label>
+
+          <button type="submit">Crear tarea</button>
+        </form>
+        <p id="form-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>Tareas</h2>
+          <button id="refresh" type="button" class="secondary">Actualizar</button>
+        </div>
+        <div id="tasks-empty" class="empty">No hay tareas registradas todavía.</div>
+        <ul id="tasks" class="task-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <template id="task-template">
+      <li class="task">
+        <div class="task-main">
+          <h3 class="task-title"></h3>
+          <p class="task-description"></p>
+          <dl class="meta">
+            <div><dt>Creada</dt><dd class="created-at"></dd></div>
+            <div><dt>Actualizada</dt><dd class="updated-at"></dd></div>
+          </dl>
+        </div>
+        <div class="task-actions">
+          <span class="status"></span>
+          <div class="buttons"></div>
+        </div>
+      </li>
+    </template>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
