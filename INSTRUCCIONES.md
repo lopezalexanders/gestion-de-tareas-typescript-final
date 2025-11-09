@@ -1,25 +1,36 @@
-# Instrucciones para ejecutar y probar la API
+# Guía de instalación y uso
 
-## 1. Instala dependencias
+## 1. Requisitos previos
+- Node.js 18 o superior
+- npm 9 o superior
+
+## 2. Instalar dependencias
 ```bash
 npm install
 ```
 
-## 2. Ejecuta en modo desarrollo (hot reload con ts-node-dev)
+## 3. Ejecutar en modo desarrollo
+Levanta la API y el frontend con recarga en caliente usando ts-node-dev:
 ```bash
 npm run dev
 ```
-O, si deseas compilar y correr la versión build:
+Luego abre [http://localhost:3000](http://localhost:3000) en tu navegador. Desde la interfaz web podrás:
+- Crear nuevas tareas.
+- Listar las tareas existentes.
+- Cambiar el estado entre **Pendiente → En progreso → Completada** siguiendo las reglas de negocio.
+
+La API REST sigue disponible bajo el prefijo [/api](http://localhost:3000/api). Puedes seguir utilizando herramientas como curl o Postman si lo prefieres.
+
+## 4. Compilar y ejecutar la versión compilada
 ```bash
 npm run build
 npm start
 ```
-
-La API quedará disponible en [http://localhost:3000/api](http://localhost:3000/api).
+Esto generará los archivos en `dist/` y expondrá tanto la API como el frontend listo para producción.
 
 ---
 
-## 3. Prueba manual con curl o Postman
+## Anexo: ejemplos de pruebas manuales con curl
 
 ### Crear tarea
 ```bash
@@ -42,7 +53,7 @@ curl -X PATCH http://localhost:3000/api/tasks/<ID-TAREA> \
 
 ---
 
-# Ejemplo de pruebas automáticas
+## Anexo: ejemplo de pruebas automáticas
 
 Asegúrate de instalar las dependencias de desarrollo para pruebas:
 ```bash
@@ -104,3 +115,4 @@ describe("Gestor de tareas API", () => {
     expect(res.statusCode).toBe(400);
   });
 });
+````
